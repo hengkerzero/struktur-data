@@ -37,12 +37,12 @@ def cetak_garis(char="=", panjang=60):
     print(char * panjang)
 
 def input_huruf_saja(prompt):
-    """Input nama kota: hanya huruf dan spasi, tidak boleh angka/spesial."""
+    """Input nama kota: hanya huruf, tidak boleh angka, spasi, atau simbol."""
     while True:
         nilai = input(prompt).strip()
-        if re.fullmatch(r'[A-Za-z ]+', nilai):
+        if re.fullmatch(r'[A-Za-z]+', nilai):
             return nilai.title()
-        print("  [!] Input tidak valid. Nama kota hanya boleh berisi huruf dan spasi.")
+        print("  [!] Input tidak valid. Nama kota hanya boleh berisi huruf.")
 
 def input_int_positif(prompt):
     while True:
@@ -157,9 +157,9 @@ def menu_kelola_hub():
         print("  0)   Kembali ke Menu Utama")
         cetak_garis("-")
         pilihan = input("  Pilih menu: ").strip()
-        if pilihan == "1":
+        if pilihan in ("1", "1.1"):
             menu_input_hub()
-        elif pilihan == "2":
+        elif pilihan in ("2", "1.2"):
             menu_input_rute()
         elif pilihan == "0":
             break
@@ -197,11 +197,11 @@ def menu_kelola_resi():
         print("  0)   Kembali ke Menu Utama")
         cetak_garis("-")
         pilihan = input("  Pilih menu: ").strip()
-        if pilihan == "1":
+        if pilihan in ("1", "2.1"):
             menu_input_resi()
-        elif pilihan == "2":
+        elif pilihan in ("2", "2.2"):
             menu_lihat_resi()
-        elif pilihan == "3":
+        elif pilihan in ("3", "2.3"):
             menu_urut_resi()
         elif pilihan == "0":
             break
@@ -321,11 +321,11 @@ def menu_kelola_kurir():
         print("  0)   Kembali ke Menu Utama")
         cetak_garis("-")
         pilihan = input("  Pilih menu: ").strip()
-        if pilihan == "1":
+        if pilihan in ("1", "3.1"):
             menu_input_kurir()
-        elif pilihan == "2":
+        elif pilihan in ("2", "3.2"):
             menu_plotting_manifest()
-        elif pilihan == "3":
+        elif pilihan in ("3", "3.3"):
             menu_tampil_manifest()
         elif pilihan == "0":
             break
@@ -493,10 +493,6 @@ def inisialisasi_data_awal():
 
 def main():
     inisialisasi_data_awal()
-    cetak_garis()
-    print("  Selamat datang di SILOG - Sistem Informasi Logistik")
-    print("  Nama  : SENDY FERRY SETYAWAN | NPM: 218")
-    cetak_garis()
 
     while True:
         cetak_garis()
